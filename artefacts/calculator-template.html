@@ -22,3 +22,27 @@
 <input type="number" >
 <input type="button" value="Calculate">
 <div>[Result]</div>
+
+
+//calculatorModel.ts
+export class CalculatorModel{
+
+	//state
+	n1 : number = 0;
+	n2 : number = 0;
+	result : number = 0;
+
+	//behavior
+	add(){
+		this.result = this.n1 + this.n2;
+	}
+
+}
+
+//component
+import { CalculatorModel } from './CalculatorModel';
+
+class CalculatorComponent{
+	model : CalculatorModel = new CalculatorModel();
+	
+}
