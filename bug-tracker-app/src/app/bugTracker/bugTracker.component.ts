@@ -11,12 +11,12 @@ import { IBug } from './models/IBug';
 		</section>
 		<section class="sort">
 			<label for="">Order By :</label>
-			<select name="" id="">
-				<option value=""></option>
-				<option value=""></option>
+			<select [(ngModel)]="sortBugsBy">
+				<option value="name">Name</option>
+				<option value="isClosed">Status</option>
 			</select>
 			<label for="">Descending ? :</label>
-			<input type="checkbox" name="" id="">
+			<input type="checkbox" [(ngModel)]="sortBugsDescending">
 		</section>
 		<section class="edit">
 			<label for="">Bug Name :</label>
@@ -25,7 +25,7 @@ import { IBug } from './models/IBug';
 		</section>
 		<section class="list">
 			<ol>
-				<li *ngFor="let bug of bugs">
+				<li *ngFor="let bug of (bugs | sort:sortBugsBy:sortBugsDescending)">
 					<span class="bugname" (click)="onBugClick(bug)"
 						[ngClass]="{closed : bug.isClosed}"
 						>
@@ -41,6 +41,8 @@ import { IBug } from './models/IBug';
 export class BugTrackerComponent{
 
 	bugs : IBug[] = [];
+	sortBugsBy : string = 'name';
+	sortBugsDescending : boolean = false;
 
 	onCreateClick(bugName : string){
 		let newBug = {
