@@ -5,7 +5,7 @@ import { IBug } from './models/IBug';
 	selector : 'app-bug-tracker',
 	template : `
 		<section class="stats">
-			<span class="closed">1</span>
+			<span class="closed">{{getClosedCount()}}</span>
 			<span> / </span>
 			<span>{{bugs.length}}</span>
 		</section>
@@ -26,13 +26,15 @@ import { IBug } from './models/IBug';
 		<section class="list">
 			<ol>
 				<li *ngFor="let bug of bugs">
-					<span class="bugname" (click)="onBugClick(bug)">
+					<span class="bugname" (click)="onBugClick(bug)"
+						[ngClass]="{closed : bug.isClosed}"
+						>
 						{{bug | json}}
 					</span>
 					<div class="datetime">[Created At]</div>
 				</li>
 			</ol>
-			<input type="button" value="Remove Closed">
+			<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
 		</section>
 	`
 })
@@ -52,4 +54,12 @@ export class BugTrackerComponent{
 		bugToToggle.isClosed = !bugToToggle.isClosed;
 	}
 
+	onRemoveClosedClick(){
+		this.bugs = this.bugs.filter(bug => !bug.isClosed);
+	}
+
+	getClosedCount(){
+		return this.bugs.reduce((prevResult, bug) 
+			=> bug.isClosed ? ++prevResult : prevResult, 0);
+	}
 }
