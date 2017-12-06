@@ -29,7 +29,7 @@ import { IBug } from './models/IBug';
 					<span class="bugname" (click)="onBugClick(bug)"
 						[ngClass]="{closed : bug.isClosed}"
 						>
-						{{bug | json}}
+						{{bug.name | trimText}}
 					</span>
 					<div class="datetime">[Created At]</div>
 				</li>
@@ -59,7 +59,9 @@ export class BugTrackerComponent{
 	}
 
 	getClosedCount(){
-		return this.bugs.reduce((prevResult, bug) 
-			=> bug.isClosed ? ++prevResult : prevResult, 0);
+		return this.bugs.reduce(function(prevResult, bug) {
+			return bug.isClosed ? ++prevResult : prevResult; 
+		}, 0);
+		
 	}
 }
