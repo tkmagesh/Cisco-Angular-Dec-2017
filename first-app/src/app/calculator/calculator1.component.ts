@@ -12,7 +12,7 @@ import { CalculatorModel } from './CalculatorModel';
 		<input type="button" value="Subtract" (click)="model.subtract()">
 		<input type="button" value="Multiply" (click)="model.multiply()">
 		<input type="button" value="Divide" (click)="model.divide()">
-		<div>{{model.result}}</div>
+		<calculator-result [data]="model.result"></calculator-result>
 	`
 })
 export class CalculatorOneComponent{

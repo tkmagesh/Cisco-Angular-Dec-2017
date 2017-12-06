@@ -15,7 +15,7 @@ import { CalculatorModel } from './CalculatorModel';
 		</select>
 		<input type="number" [(ngModel)]="model.n2">
 		<input type="button" value="Calculate" (click)="model[operator]()">
-		<div>{{model.result}}</div>
+		<calculator-result [data]="model.result"></calculator-result>
 	`
 })
 export class CalculatorTwoComponent{

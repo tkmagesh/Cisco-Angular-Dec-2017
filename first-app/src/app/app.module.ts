@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { GreeterComponent } from './greeter/greeter.component';
 import { CalculatorOneComponent } from './calculator/calculator1.component';
 import { CalculatorTwoComponent } from './calculator/calculator2.component';
+import { CalculatorResultComponent } from './calculator/calculator-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GreeterComponent,
     CalculatorOneComponent,
-    CalculatorTwoComponent
+    CalculatorTwoComponent,
+    CalculatorResultComponent
   ],
   imports: [
   	FormsModule,
