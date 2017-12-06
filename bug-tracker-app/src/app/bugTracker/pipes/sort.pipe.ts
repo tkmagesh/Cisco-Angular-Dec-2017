@@ -1,10 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 interface IComparer{
 	(item1 : any, item2 : any) : number
 }
-
-
 @Pipe({
 	name : 'sort'
 })
