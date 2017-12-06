@@ -24,12 +24,8 @@ import { Component } from '@angular/core';
 		</section>
 		<section class="list">
 			<ol>
-				<li>
-					<span class="bugname">[This is bug - 1]</span>
-					<div class="datetime">[Created At]</div>
-				</li>
-				<li>
-					<span class="bugname closed">[This is bug - 2]</span>
+				<li *ngFor="let bug of bugs">
+					<span class="bugname">{{bug}}</span>
 					<div class="datetime">[Created At]</div>
 				</li>
 			</ol>
