@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IBug } from './models/IBug';
 
 @Component({
 	selector : 'app-bug-tracker',
@@ -25,7 +26,9 @@ import { Component } from '@angular/core';
 		<section class="list">
 			<ol>
 				<li *ngFor="let bug of bugs">
-					<span class="bugname">{{bug}}</span>
+					<span class="bugname" (click)="onBugClick(bug)">
+						{{bug | json}}
+					</span>
 					<div class="datetime">[Created At]</div>
 				</li>
 			</ol>
@@ -35,10 +38,18 @@ import { Component } from '@angular/core';
 })
 export class BugTrackerComponent{
 
-	bugs : string[] = [];
+	bugs : IBug[] = [];
 
-	onCreateClick(bugName){
-		this.bugs.push(bugName);
+	onCreateClick(bugName : string){
+		let newBug = {
+			name : bugName,
+			isClosed : false
+		};
+		this.bugs.push(newBug);
+	}
+
+	onBugClick(bugToToggle : IBug){
+		bugToToggle.isClosed = !bugToToggle.isClosed;
 	}
 
 }
