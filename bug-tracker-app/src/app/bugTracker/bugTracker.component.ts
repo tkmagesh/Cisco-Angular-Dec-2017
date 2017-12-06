@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 		<section class="stats">
 			<span class="closed">1</span>
 			<span> / </span>
-			<span>2</span>
+			<span>{{bugs.length}}</span>
 		</section>
 		<section class="sort">
 			<label for="">Order By :</label>
@@ -19,8 +19,8 @@ import { Component } from '@angular/core';
 		</section>
 		<section class="edit">
 			<label for="">Bug Name :</label>
-			<input type="text" name="" id="">
-			<input type="button" value="Create">
+			<input type="text" #txtBugName>
+			<input type="button" value="Create" (click)="onCreateClick(txtBugName.value)">
 		</section>
 		<section class="list">
 			<ol>
@@ -38,5 +38,11 @@ import { Component } from '@angular/core';
 	`
 })
 export class BugTrackerComponent{
-	
+
+	bugs : string[] = [];
+
+	onCreateClick(bugName){
+		this.bugs.push(bugName);
+	}
+
 }
