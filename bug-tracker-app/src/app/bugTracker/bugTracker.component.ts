@@ -29,7 +29,7 @@ import { IBug } from './models/IBug';
 					<span class="bugname" (click)="onBugClick(bug)"
 						[ngClass]="{closed : bug.isClosed}"
 						>
-						{{bug.name | trimText}}
+						{{bug.name | trimText:40}}
 					</span>
 					<div class="datetime">[Created At]</div>
 				</li>
