@@ -16,6 +16,7 @@ export class BugStatsComponent{
 	bugs : IBug[] = [];
 
 	getClosedCount(){
+		//console.log('getClosedCount triggered');
 		return this.bugs.reduce(function(prevResult, bug) {
 			return bug.isClosed ? ++prevResult : prevResult; 
 		}, 0);

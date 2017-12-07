@@ -8,8 +8,8 @@ import { BugStorageService } from '../services/bugStorage.service';
 	template : `
 		<section class="edit">
 			<label for="">Bug Name :</label>
-			<input type="text" #txtBugName>
-			<input type="button" value="Create" (click)="onCreateClick(txtBugName.value)">
+			<input type="text" [(ngModel)]="newBugName">
+			<input type="button" value="Create" (click)="onCreateClick()">
 		</section>
 	`
 })
@@ -18,11 +18,13 @@ export class BugEditComponent{
 	@Output()
 	public createBug : EventEmitter<IBug> = new EventEmitter<IBug>();
 
+	public newBugName : string = '';
+
 	constructor(private bugStorage : BugStorageService){
 		
 	}
-	onCreateClick(bugName : string){
-		let newBug = this.bugStorage.addNew(bugName);
+	onCreateClick(){
+		let newBug = this.bugStorage.addNew(this.newBugName);
 		this.createBug.emit(newBug);
 	}
 }

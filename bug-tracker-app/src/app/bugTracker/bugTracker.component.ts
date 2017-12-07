@@ -38,7 +38,7 @@ export class BugTrackerComponent implements OnInit{
 	sortBugsDescending : boolean = false;
 
 	constructor(private bugStorage : BugStorageService){
-		
+
 	}
 
 	ngOnInit(){
@@ -46,7 +46,7 @@ export class BugTrackerComponent implements OnInit{
 	}
 	
 	onBugCreated(newBug : IBug){
-		this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
 	}
 
 	onBugClick(bugToToggle : IBug){
