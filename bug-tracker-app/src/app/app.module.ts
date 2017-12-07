@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bugTracker/bugTracker.component';
+import { BugStatsComponent } from './bugTracker/views/bugStats.component';
 
+import { ElapsedPipe } from './bugTracker/pipes/elapsed.pipe';
 import { TrimTextPipe } from './bugTracker/pipes/trimText.pipe';
 import { SortPipe } from './bugTracker/pipes/sort.pipe';
 
@@ -15,8 +17,10 @@ import { BugStorageService } from './bugTracker/services/bugStorage.service';
   declarations: [
     AppComponent,
     BugTrackerComponent,
+    BugStatsComponent,
     TrimTextPipe,
-    SortPipe
+    SortPipe,
+    ElapsedPipe
   ],
   imports: [
     BrowserModule,

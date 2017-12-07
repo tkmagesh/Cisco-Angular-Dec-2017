@@ -5,11 +5,7 @@ import { BugStorageService } from './services/bugStorage.service';
 @Component({
 	selector : 'app-bug-tracker',
 	template : `
-		<section class="stats">
-			<span class="closed">{{getClosedCount()}}</span>
-			<span> / </span>
-			<span>{{bugs.length}}</span>
-		</section>
+		<bug-stats [data]="bugs"></bug-stats>
 		<section class="sort">
 			<label for="">Order By :</label>
 			<select [(ngModel)]="sortBugsBy">
@@ -32,7 +28,7 @@ import { BugStorageService } from './services/bugStorage.service';
 						>
 						{{bug.name | trimText:40}}
 					</span>
-					<div class="datetime">{{bug.createdAt}}</div>
+					<div class="datetime" [title]="bug.createdAt | date:'dd-MMM-yyyy hh:mm:ss a'">{{bug.createdAt | elapsed}}</div>
 				</li>
 			</ol>
 			<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
@@ -69,10 +65,5 @@ export class BugTrackerComponent implements OnInit{
 		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
 
-	getClosedCount(){
-		return this.bugs.reduce(function(prevResult, bug) {
-			return bug.isClosed ? ++prevResult : prevResult; 
-		}, 0);
-		
-	}
+	
 }
