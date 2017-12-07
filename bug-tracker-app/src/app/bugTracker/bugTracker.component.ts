@@ -50,7 +50,8 @@ export class BugTrackerComponent implements OnInit{
 	}
 
 	onBugClick(bugToToggle : IBug){
-		this.bugStorage.toggle(bugToToggle);
+		let toggledBug = this.bugStorage.toggle(bugToToggle);
+		this.bugs = this.bugs.map(bugInList => bugInList === bugToToggle ? toggledBug : bugInList);
 	}
 
 	onRemoveClosedClick(){
