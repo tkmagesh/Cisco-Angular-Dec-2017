@@ -17,6 +17,24 @@
       "name": "Router is not routing",
       "isClosed": false,
       "createdAt": "2017-11-30T11:39:42.663Z"
+    },
+    {
+      "id": 4,
+      "name": "Promises are not resolved",
+      "isClosed": false,
+      "createdAt": "2017-12-07T09:51:44.207Z"
+    },
+    {
+      "id": 5,
+      "name": "asdfdas fas",
+      "isClosed": true,
+      "createdAt": "2017-12-07T09:53:02.013Z"
+    },
+    {
+      "id": 6,
+      "name": "another new bug",
+      "isClosed": false,
+      "createdAt": "2017-12-07T09:53:50.992Z"
     }
   ],
   "projects": [
